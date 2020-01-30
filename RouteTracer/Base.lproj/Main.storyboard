@@ -1,24 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="haC-Z4-2fQ">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Routes List View Controller-->
+        <scene sceneID="MpF-9I-tCg">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="vgV-H8-QFO" customClass="RoutesListViewController" customModule="RouteTracer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G8q-EK-ZxY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="AMV-nn-0q1"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Nrw-IL-QvZ"/>
+                    <connections>
+                        <segue destination="gX4-Ft-kYT" kind="show" id="gvQ-dv-lSK"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lbL-BJ-pgE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1365.217391304348" y="356.91964285714283"/>
+        </scene>
+        <!--Route Detail View Controller-->
+        <scene sceneID="rtd-dT-jkF">
+            <objects>
+                <viewController id="gX4-Ft-kYT" customClass="RouteDetailViewController" customModule="RouteTracer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tVN-bG-b0v">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="F3L-Ue-bVG"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="II1-ac-iDS"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZSg-PV-DEu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2184.057971014493" y="356.91964285714283"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="670-cu-MMm">
+            <objects>
+                <viewController id="Ti3-wV-6bg" customClass="MapViewController" customModule="RouteTracer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1WZ-At-mWc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ng0-42-FQd">
+                                <rect key="frame" x="0.0" y="44" width="414" height="706.5"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F26-zB-kFi">
+                                <rect key="frame" x="0.0" y="750.5" width="414" height="62.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <state key="normal" title="Trace route"/>
+                                <connections>
+                                    <action selector="traceRouteButtonAction:" destination="Ti3-wV-6bg" eventType="touchUpInside" id="VlC-to-qyG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="F26-zB-kFi" firstAttribute="top" secondItem="Ng0-42-FQd" secondAttribute="bottom" id="8Ry-Rz-iFn"/>
+                            <constraint firstItem="Ng0-42-FQd" firstAttribute="leading" secondItem="BQa-gh-DV3" secondAttribute="leading" id="AXh-go-GLW"/>
+                            <constraint firstItem="F26-zB-kFi" firstAttribute="bottom" secondItem="BQa-gh-DV3" secondAttribute="bottom" id="XAn-vd-QqU"/>
+                            <constraint firstItem="Ng0-42-FQd" firstAttribute="trailing" secondItem="BQa-gh-DV3" secondAttribute="trailing" id="fzh-oe-Rms"/>
+                            <constraint firstItem="F26-zB-kFi" firstAttribute="leading" secondItem="BQa-gh-DV3" secondAttribute="leading" id="kVz-sr-CSJ"/>
+                            <constraint firstItem="F26-zB-kFi" firstAttribute="height" secondItem="1WZ-At-mWc" secondAttribute="height" multiplier="0.07" id="o1u-sC-1xu"/>
+                            <constraint firstItem="F26-zB-kFi" firstAttribute="trailing" secondItem="BQa-gh-DV3" secondAttribute="trailing" id="qFU-eq-vEH"/>
+                            <constraint firstItem="Ng0-42-FQd" firstAttribute="top" secondItem="BQa-gh-DV3" secondAttribute="top" id="qqc-ci-Fht"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BQa-gh-DV3"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map" id="gxO-xU-20S"/>
+                    <connections>
+                        <outlet property="mapView" destination="Ng0-42-FQd" id="kkW-Cy-1Uo"/>
+                        <outlet property="traceRouteButton" destination="F26-zB-kFi" id="OoL-VL-igp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i16-Vc-H2f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="455.07246376811599" y="-291.29464285714283"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="HNY-D9-C9t">
+            <objects>
+                <tabBarController id="haC-Z4-2fQ" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bXA-Yy-2L0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Ti3-wV-6bg" kind="relationship" relationship="viewControllers" id="xvF-VL-nON"/>
+                        <segue destination="o1w-Nw-tfw" kind="relationship" relationship="viewControllers" id="MBp-iM-1RW"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a7x-zy-EOW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-462" y="33"/>
+        </scene>
+        <!--Routes List-->
+        <scene sceneID="WYw-ty-VBI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o1w-Nw-tfw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Routes List" id="49u-rE-dAc"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oVh-CW-13o">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vgV-H8-QFO" kind="relationship" relationship="rootViewController" id="WHI-W7-Jls"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Npi-YU-vbs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="455.07246376811599" y="356.91964285714283"/>
         </scene>
     </scenes>
 </document>
