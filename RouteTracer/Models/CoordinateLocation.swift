@@ -8,17 +8,21 @@
 
 import Foundation
 import CoreLocation
+import RealmSwift
 
-struct CoordinateLocation: Codable {
-    let latitude: Double
-    let longitude: Double
-    
-    init(latitude: Double, longitude: Double) {
-        self.latitude = latitude
-        self.longitude = longitude
+class CoordinateLocation: Object {
+    @objc dynamic var id = 0
+    @objc dynamic var latitude: Double = 0
+    @objc dynamic var longitude: Double = 0
+    var coordinate2DRepresentation: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
     }
     
-    init(coordinate: CLLocationCoordinate2D) {
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
+    func createWith(coordinate: CLLocationCoordinate2D) {
         self.latitude = coordinate.latitude
         self.longitude = coordinate.longitude
     }
