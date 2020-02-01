@@ -14,6 +14,7 @@ class MapViewController: UIViewController {
     //MARK: - UI
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var traceRouteButton: UIButton!
+    var clearBarButton: UIBarButtonItem!
     
     //MARK: - Variables
     
@@ -35,6 +36,12 @@ class MapViewController: UIViewController {
     private func setup() {
         self.setupLocationManager()
         self.setupMapView()
+        self.setupBarButton()
+    }
+    
+    private func setupBarButton() {
+        self.clearBarButton = UIBarButtonItem(barButtonSystemItem: .redo, target: self, action: #selector(clearBarButtonAction))
+        self.navigationItem.rightBarButtonItem = self.clearBarButton
     }
     
     private func setupMapView() {
@@ -50,6 +57,20 @@ class MapViewController: UIViewController {
         self.locationManager.distanceFilter = kCLDistanceFilterNone
         self.locationManager.delegate = self
         self.locationManager.startUpdatingLocation()
+    }
+    
+    private func setMarkerOnMap(title: String, subtitle: String, coordinate: CLLocationCoordinate2D) {
+        
+        let marker = MapMarker(title: title, subtitle: subtitle, coordinate: coordinate)
+        self.mapView.addAnnotation(marker)
+    }
+    
+    private func clean() {
+        self.tmpLocations.removeAll(keepingCapacity: false)
+        self.route = nil
+        self.mapView.removeAnnotations(self.mapView.annotations)
+        self.mapView.removeOverlays(self.mapView.overlays)
+        self.polylineRoute = nil
     }
     
     //MARK: - Actions
@@ -124,14 +145,8 @@ class MapViewController: UIViewController {
         
     }//End IBAction
     
-    private func setMarkerOnMap(title: String, subtitle: String, coordinate: CLLocationCoordinate2D) {
-        
-        let marker = MapMarker(title: title, subtitle: subtitle, coordinate: coordinate)
-        self.mapView.addAnnotation(marker)
-    }
-    
-    private func clean() {
-        
+    @objc func clearBarButtonAction() {
+        self.clean()
     }
      
 }
