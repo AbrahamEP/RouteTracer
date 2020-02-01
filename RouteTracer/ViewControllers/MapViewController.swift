@@ -18,13 +18,10 @@ class MapViewController: UIViewController {
     //MARK: - Variables
     
     let locationManager: CLLocationManager = CLLocationManager()
-    var startPoint: MKPointAnnotation?
-    var endPoint: MKPointAnnotation?
     var isTracing: Bool = false
-    var isFirstTimeLocation = true
     var polylineRoute: MKPolyline!
+    var tmpLocations = [CLLocationCoordinate2D]()
     var route: Route!
-    var locations: [CLLocationCoordinate2D] = []
     
     //MARK: - Lifecycle
     
@@ -42,7 +39,9 @@ class MapViewController: UIViewController {
     
     private func setupMapView() {
         self.mapView.delegate = self
-        self.mapView.userTrackingMode = .follow
+        self.mapView.userTrackingMode = .followWithHeading
+        self.mapView.setCameraZoomRange(MKMapView.CameraZoomRange.init(minCenterCoordinateDistance: 2500, maxCenterCoordinateDistance: 1400), animated: true)
+        
     }
     
     private func setupLocationManager() {
@@ -56,24 +55,85 @@ class MapViewController: UIViewController {
     //MARK: - Actions
     @IBAction func traceRouteButtonAction(_ sender: UIButton) {
         if self.isTracing {
-            //Stop trace and save the route
-            self.endPoint = MKPointAnnotation()
-            self.endPoint!.title = "End"
-            self.endPoint!.coordinate = self.locationManager.location!.coordinate
-            self.mapView.addAnnotation(self.endPoint!)
+            //Stop the trace and save the route
             self.isTracing = false
             
-        } else {
-            //Start trace
-            //Set point annotation
-            self.startPoint = MKPointAnnotation()
-            self.startPoint!.title = "Start"
-            self.startPoint!.coordinate = self.locationManager.location!.coordinate
-            self.mapView.addAnnotation(self.startPoint!)
-            self.isTracing = true
+            //Get location
+            guard let coordinate = self.locationManager.location?.coordinate else {return}
+            self.route.endPoint = coordinate.toCoordinateLocation()
             
-        }
+            //Configure Alert
+            let textFieldConfiguration: (UITextField) -> Void = {
+                (textField) in
+                textField.placeholder = "Here the route's name"
+            }
+            let alertCompletion: (UIAlertController.TextInputResult) -> Void = {
+                [weak self] (result) in
+                guard let self = self else {return}
+                
+                switch result {
+                case .cancel:
+                    
+                    self.clean()
+                    
+                case .ok(let text):
+                    
+                    self.route.name = text
+                    self.setMarkerOnMap(title: "End", subtitle: "Route's end", coordinate: coordinate)
+                    
+                    //Save the route
+                    TracerRealmManager.saveRoute(self.route)
+                }
+            }
+            
+            
+            
+            //Ask the user the name of the route
+            let alert = UIAlertController(
+                title: "Route name",
+                message: "Choose a name for this route",
+                cancelButtonTitle: "Cancel",
+                okButtonTitle: "Submit",
+                validate: .nonEmpty,
+                textFieldConfiguration: textFieldConfiguration,
+                onCompletion: alertCompletion)
+            
+            self.present(alert, animated: true, completion: nil)
+            
+            
+            
+        } else {
+            
+            //Start the route trace
+            
+            //Create the route
+            guard let coordinate = self.locationManager.location?.coordinate else {
+                self.showAlertOneButtonWith(alertTitle: "Couldn't get the current location", alertMessage: "Try again please", buttonTitle: "Ok")
+                return
+            }
+            self.isTracing = true
+            self.route = Route()
+            self.route.startPoint = coordinate.toCoordinateLocation()
+            
+            //Set the marker on the map
+            self.setMarkerOnMap(title: "Start", subtitle: "Route's start",coordinate: coordinate)
+            
+        } //End else
+        
+        
+        
+    }//End IBAction
+    
+    private func setMarkerOnMap(title: String, subtitle: String, coordinate: CLLocationCoordinate2D) {
+        
+        let marker = MapMarker(title: title, subtitle: subtitle, coordinate: coordinate)
+        self.mapView.addAnnotation(marker)
     }
+    
+    private func clean() {
+        
+    }
+     
 }
 
 extension MapViewController: CLLocationManagerDelegate {
@@ -84,8 +144,10 @@ extension MapViewController: CLLocationManagerDelegate {
         
         if self.isTracing {
             //Start tracing route
-            self.locations.append(userLocation.coordinate)
-            self.polylineRoute = MKPolyline(coordinates: self.locations, count: self.locations.count)
+            
+            self.route.locations.append(userLocation.coordinate.toCoordinateLocation())
+            self.tmpLocations.append(userLocation.coordinate)
+            self.polylineRoute = MKPolyline(coordinates: self.tmpLocations, count: self.tmpLocations.count)
             self.mapView.addOverlay(self.polylineRoute)
         }
     }
@@ -96,15 +158,36 @@ extension MapViewController: MKMapViewDelegate {
         if overlay is MKPolyline {
             let polylineRenderer = MKPolylineRenderer(overlay: overlay)
             polylineRenderer.strokeColor = UIColor.green
-            polylineRenderer.lineWidth = 4
+            polylineRenderer.lineWidth = 8
             
             return polylineRenderer
         }
         return MKPolylineRenderer()
     }
     
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+      
+        guard let annotation = annotation as? MapMarker else { return nil }
+          
+        let identifier = "marker"
+        var view: MKMarkerAnnotationView
+          
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+            as? MKMarkerAnnotationView {
+            
+            dequeuedView.annotation = annotation
+            view = dequeuedView
+            
+        } else {
+            
+            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.canShowCallout = true
+            view.calloutOffset = CGPoint(x: -5, y: 5)
+            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
         
-        return nil
+        view.displayPriority = .required
+        return view
     }
 }

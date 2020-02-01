@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,8 +17,9 @@
 		A34B629C23E35E7D007C132E /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B629B23E35E7D007C132E /* RouteDetailViewController.swift */; };
 		A34B629F23E36CE9007C132E /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B629E23E36CE9007C132E /* Route.swift */; };
 		A34B62A223E3758C007C132E /* CoordinateLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B62A123E3758C007C132E /* CoordinateLocation.swift */; };
-		A34B62A423E375F2007C132E /* Tracer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B62A323E375F2007C132E /* Tracer.swift */; };
+		A34B62A423E375F2007C132E /* TracerRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B62A323E375F2007C132E /* TracerRealmManager.swift */; };
 		A34B62A623E37B98007C132E /* MyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B62A523E37B98007C132E /* MyExtensions.swift */; };
+		A36208D223E4F1B30040856E /* MapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36208D123E4F1B30040856E /* MapMarker.swift */; };
 		FC5F92CB47847C877C9FFC15 /* Pods_RouteTracer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32B28084BD9053AD5E6B62B /* Pods_RouteTracer.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,8 +38,9 @@
 		A34B629B23E35E7D007C132E /* RouteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
 		A34B629E23E36CE9007C132E /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		A34B62A123E3758C007C132E /* CoordinateLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateLocation.swift; sourceTree = "<group>"; };
-		A34B62A323E375F2007C132E /* Tracer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracer.swift; sourceTree = "<group>"; };
+		A34B62A323E375F2007C132E /* TracerRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracerRealmManager.swift; sourceTree = "<group>"; };
 		A34B62A523E37B98007C132E /* MyExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExtensions.swift; sourceTree = "<group>"; };
+		A36208D123E4F1B30040856E /* MapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarker.swift; sourceTree = "<group>"; };
 		C32B28084BD9053AD5E6B62B /* Pods_RouteTracer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RouteTracer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -111,6 +113,7 @@
 			children = (
 				A34B629E23E36CE9007C132E /* Route.swift */,
 				A34B62A123E3758C007C132E /* CoordinateLocation.swift */,
+				A36208D123E4F1B30040856E /* MapMarker.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -118,7 +121,7 @@
 		A34B62A023E374C0007C132E /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				A34B62A323E375F2007C132E /* Tracer.swift */,
+				A34B62A323E375F2007C132E /* TracerRealmManager.swift */,
 				A34B62A523E37B98007C132E /* MyExtensions.swift */,
 			);
 			path = Helper;
@@ -130,7 +133,6 @@
 				45B1F4545E88AC29C5FA9BA9 /* Pods-RouteTracer.debug.xcconfig */,
 				9299D8109B33C8270B2A35CF /* Pods-RouteTracer.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -249,7 +251,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A34B62A423E375F2007C132E /* Tracer.swift in Sources */,
+				A36208D223E4F1B30040856E /* MapMarker.swift in Sources */,
+				A34B62A423E375F2007C132E /* TracerRealmManager.swift in Sources */,
 				A30FBA1C23E2285800EA4D98 /* AppDelegate.swift in Sources */,
 				A34B62A223E3758C007C132E /* CoordinateLocation.swift in Sources */,
 				A34B629823E35DE2007C132E /* MapViewController.swift in Sources */,
