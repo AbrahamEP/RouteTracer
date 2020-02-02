@@ -7,16 +7,40 @@
 //
 
 import UIKit
+import RealmSwift
 
 class RoutesListViewController: UIViewController {
-
+    
+    //MARK: - UI
+    @IBOutlet weak var routesTableView: UITableView!
+    
+    //MARK: - Properties
+    let routes = TracerRealmManager.getRoutes()
+    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.setup()
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.routesTableView.reloadData()
+    }
+    
+    //MARK: - Setup
+    private func setup() {
+        self.title = "My routes"
+        self.setupTableView()
+    }
+    
+    private func setupTableView() {
+        self.routesTableView.delegate = self
+        self.routesTableView.dataSource = self
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -27,4 +51,23 @@ class RoutesListViewController: UIViewController {
     }
     */
 
+}
+
+extension RoutesListViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        let route = self.routes[indexPath.row]
+        cell.textLabel?.text = route.name
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.routes.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }

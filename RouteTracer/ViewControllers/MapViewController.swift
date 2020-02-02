@@ -47,8 +47,6 @@ class MapViewController: UIViewController {
     private func setupMapView() {
         self.mapView.delegate = self
         self.mapView.userTrackingMode = .followWithHeading
-        self.mapView.setCameraZoomRange(MKMapView.CameraZoomRange.init(minCenterCoordinateDistance: 2500, maxCenterCoordinateDistance: 1400), animated: true)
-        
     }
     
     private func setupLocationManager() {
@@ -146,6 +144,10 @@ class MapViewController: UIViewController {
     }//End IBAction
     
     @objc func clearBarButtonAction() {
+        guard !self.isTracing else {
+            self.showAlertOneButtonWith(alertTitle: "Forbidden", alertMessage: "You can't clean the screen if you're in the middle of a trace", buttonTitle: "Ok")
+            return
+        }
         self.clean()
     }
      
