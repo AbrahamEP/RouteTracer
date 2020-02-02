@@ -29,4 +29,8 @@ class TracerRealmManager {
             configuration()
         }
     }
+    
+    static func getRoutes() -> Results<Route> {
+        return myRealm.objects(Route.self)
+    }
 }
