@@ -17,6 +17,24 @@ class Route: Object {
     @objc dynamic var startTime: Date?
     @objc dynamic var endTime: Date?
     @objc dynamic var distanceInKm: Double = 0.0
+    var distanceStringDescription: String {
+        return String(format: "%.2f", self.distanceInKm) + " km"
+    }
+    var locationsIn2DCoordinate: [CLLocationCoordinate2D] {
+        return self.locations.map { (location) -> CLLocationCoordinate2D in
+            return location.coordinate2DRepresentation
+        }
+    }
+    var timeDescription: String {
+        let intervalFormatter = DateComponentsFormatter()
+        intervalFormatter.allowedUnits = [.hour, .minute, .second]
+        intervalFormatter.unitsStyle = .full
+        
+        guard let start = self.startTime, let end = self.endTime, let timeString = intervalFormatter.string(from: start, to: end) else {
+            return "Not available"
+        }
+        return timeString
+    }
     
     func createWith(name: String,  locations: [CLLocationCoordinate2D], startTime: Date, endTime: Date, distanceKm: Double) {
         self.name = name
@@ -38,6 +56,3 @@ class Route: Object {
     }
 }
 
-extension Route {
-    
-}

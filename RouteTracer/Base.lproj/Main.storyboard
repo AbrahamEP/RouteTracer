@@ -52,7 +52,7 @@
                     <navigationItem key="navigationItem" id="Nrw-IL-QvZ"/>
                     <connections>
                         <outlet property="routesTableView" destination="INt-EU-36k" id="ZKG-Z3-k39"/>
-                        <segue destination="gX4-Ft-kYT" kind="show" id="gvQ-dv-lSK"/>
+                        <segue destination="gX4-Ft-kYT" kind="show" identifier="toDetailSegue" id="gvQ-dv-lSK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbL-BJ-pgE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -191,11 +191,11 @@
             </objects>
             <point key="canvasLocation" x="-462" y="33"/>
         </scene>
-        <!--Routes List-->
+        <!--My routes-->
         <scene sceneID="WYw-ty-VBI">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o1w-Nw-tfw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Routes List" id="49u-rE-dAc"/>
+                    <tabBarItem key="tabBarItem" title="My routes" image="RouteIcon" selectedImage="RouteIcon" id="49u-rE-dAc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oVh-CW-13o">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -214,7 +214,7 @@
         <scene sceneID="ucZ-9D-pR2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Cr-yV-Hsg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" id="gxO-xU-20S"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="MapIcon" selectedImage="MapIcon" id="gxO-xU-20S"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2ws-tt-IT3">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -230,4 +230,8 @@
             <point key="canvasLocation" x="455.07246376811599" y="-291.29464285714283"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MapIcon" width="32" height="32"/>
+        <image name="RouteIcon" width="32" height="32"/>
+    </resources>
 </document>
