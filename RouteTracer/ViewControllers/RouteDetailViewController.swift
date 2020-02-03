@@ -7,24 +7,42 @@
 //
 
 import UIKit
+import MapKit
 
 class RouteDetailViewController: UIViewController {
-
+    
+    //MARK: - UI
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var shareBarButton: UIBarButtonItem!
+    
+    //MARK: - Properties
+    var route: Route!
+    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.setup()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK: - Setup methods
+    private func setup() {
+        self.setupMapView()
     }
-    */
-
+    
+    private func setupMapView() {
+        
+    }
+    
+    //MARK: - Actions
+    @IBAction func shareBarButtonAction() {
+        
+    }
+    
+    @IBAction func deleteButtonAction(_ sender: UIButton) {
+        
+    }
 }

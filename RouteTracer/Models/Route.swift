@@ -14,23 +14,27 @@ class Route: Object {
     
     var locations = List<CoordinateLocation>()
     @objc dynamic var name: String = ""
-    @objc dynamic var startPoint: CoordinateLocation?
-    @objc dynamic var endPoint: CoordinateLocation?
+    @objc dynamic var startTime: Date?
+    @objc dynamic var endTime: Date?
+    @objc dynamic var distanceInKm: Double = 0.0
     
-    func createWith(name: String, startPoint: CLLocationCoordinate2D, endPoint: CLLocationCoordinate2D, locations: [CLLocationCoordinate2D]) {
+    func createWith(name: String,  locations: [CLLocationCoordinate2D], startTime: Date, endTime: Date, distanceKm: Double) {
         self.name = name
-        self.startPoint = startPoint.toCoordinateLocation()
-        self.endPoint = endPoint.toCoordinateLocation()
+        self.startTime = startTime
+        self.endTime = endTime
+        self.distanceInKm = distanceKm
+        
         for location in locations {
             self.locations.append(location.toCoordinateLocation())
         }
     }
     
-    func createWith(name: String, startPoint: CoordinateLocation, endPoint: CoordinateLocation, locations: List<CoordinateLocation>) {
+    func createWith(name: String, locations: List<CoordinateLocation>, startTime: Date, endTime: Date, distanceKm: Double) {
         self.name = name
         self.locations = locations
-        self.startPoint = startPoint
-        self.endPoint = endPoint
+        self.startTime = startTime
+        self.endTime = endTime
+        self.distanceInKm = distanceKm
     }
 }
 

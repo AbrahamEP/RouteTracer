@@ -79,7 +79,10 @@ class MapViewController: UIViewController {
             
             //Get location
             guard let coordinate = self.locationManager.location?.coordinate else {return}
-            self.route.endPoint = coordinate.toCoordinateLocation()
+            self.setMarkerOnMap(title: "End", subtitle: "Route's end", coordinate: coordinate)
+            
+            //End time for route
+            self.route.endTime = Date()
             
             //Configure Alert
             let textFieldConfiguration: (UITextField) -> Void = {
@@ -98,7 +101,7 @@ class MapViewController: UIViewController {
                 case .ok(let text):
                     
                     self.route.name = text
-                    self.setMarkerOnMap(title: "End", subtitle: "Route's end", coordinate: coordinate)
+                    
                     
                     //Save the route
                     TracerRealmManager.saveRoute(self.route)
@@ -132,7 +135,7 @@ class MapViewController: UIViewController {
             }
             self.isTracing = true
             self.route = Route()
-            self.route.startPoint = coordinate.toCoordinateLocation()
+            self.route.startTime = Date()
             
             //Set the marker on the map
             self.setMarkerOnMap(title: "Start", subtitle: "Route's start",coordinate: coordinate)
