@@ -56,6 +56,12 @@ class RouteDetailViewController: UIViewController {
     //MARK: - Actions
     @IBAction func shareBarButtonAction() {
         
+        let myRouteString = "Hi! This is my route information!"
+        let shareDistanceString = "Distance: \(self.route.distanceStringDescription)"
+        let shareTimeString = "Time: \(self.route.timeDescription)"
+        
+        let activityVC = UIActivityViewController(activityItems: [myRouteString, shareDistanceString, shareTimeString], applicationActivities: nil)
+        self.present(activityVC, animated: true, completion: nil)
     }
     
     @IBAction func deleteButtonAction(_ sender: UIButton) {
