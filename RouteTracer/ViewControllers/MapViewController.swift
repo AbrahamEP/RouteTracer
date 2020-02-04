@@ -54,6 +54,7 @@ class MapViewController: UIViewController {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.distanceFilter = kCLDistanceFilterNone
         self.locationManager.delegate = self
+        self.locationManager.allowsBackgroundLocationUpdates = true
         self.locationManager.startUpdatingLocation()
     }
     
@@ -69,6 +70,7 @@ class MapViewController: UIViewController {
         self.mapView.removeAnnotations(self.mapView.annotations)
         self.mapView.removeOverlays(self.mapView.overlays)
         self.polylineRoute = nil
+        self.mapView.goToCurrentLocation()
     }
     
     //MARK: - Actions
@@ -79,7 +81,16 @@ class MapViewController: UIViewController {
             
             //Get location
             guard let coordinate = self.locationManager.location?.coordinate else {return}
-            self.route.endPoint = coordinate.toCoordinateLocation()
+            self.setMarkerOnMap(title: "End", subtitle: "Route's end", coordinate: coordinate)
+            
+            //End time for route
+            self.route.endTime = Date()
+            
+            //Calculate total distance
+            self.route.distanceInKm = self.tmpLocations.calculateTotalDistanceInKm()
+            
+            //Show Start and end locations
+            self.mapView.showAnnotations(self.mapView.annotations, animated: true)
             
             //Configure Alert
             let textFieldConfiguration: (UITextField) -> Void = {
@@ -98,7 +109,6 @@ class MapViewController: UIViewController {
                 case .ok(let text):
                     
                     self.route.name = text
-                    self.setMarkerOnMap(title: "End", subtitle: "Route's end", coordinate: coordinate)
                     
                     //Save the route
                     TracerRealmManager.saveRoute(self.route)
@@ -132,7 +142,7 @@ class MapViewController: UIViewController {
             }
             self.isTracing = true
             self.route = Route()
-            self.route.startPoint = coordinate.toCoordinateLocation()
+            self.route.startTime = Date()
             
             //Set the marker on the map
             self.setMarkerOnMap(title: "Start", subtitle: "Route's start",coordinate: coordinate)
@@ -161,7 +171,6 @@ extension MapViewController: CLLocationManagerDelegate {
         
         if self.isTracing {
             //Start tracing route
-            
             self.route.locations.append(userLocation.coordinate.toCoordinateLocation())
             self.tmpLocations.append(userLocation.coordinate)
             self.polylineRoute = MKPolyline(coordinates: self.tmpLocations, count: self.tmpLocations.count)

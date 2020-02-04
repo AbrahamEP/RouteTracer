@@ -16,6 +16,7 @@ class RoutesListViewController: UIViewController {
     
     //MARK: - Properties
     let routes = TracerRealmManager.getRoutes()
+    var selectedRoute: Route!
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -41,15 +42,15 @@ class RoutesListViewController: UIViewController {
         self.routesTableView.dataSource = self
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        guard segue.identifier == "toDetailSegue", let detailVC = segue.destination as? RouteDetailViewController else {return}
+        detailVC.route = self.selectedRoute
     }
-    */
+    
 
 }
 
@@ -69,5 +70,7 @@ extension RoutesListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        self.selectedRoute = self.routes[indexPath.row]
+        self.performSegue(withIdentifier: "toDetailSegue", sender: self)
     }
 }

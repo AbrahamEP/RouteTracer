@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="haC-Z4-2fQ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -51,7 +52,7 @@
                     <navigationItem key="navigationItem" id="Nrw-IL-QvZ"/>
                     <connections>
                         <outlet property="routesTableView" destination="INt-EU-36k" id="ZKG-Z3-k39"/>
-                        <segue destination="gX4-Ft-kYT" kind="show" id="gvQ-dv-lSK"/>
+                        <segue destination="gX4-Ft-kYT" kind="show" identifier="toDetailSegue" id="gvQ-dv-lSK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbL-BJ-pgE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -65,10 +66,65 @@
                     <view key="view" contentMode="scaleToFill" id="tVN-bG-b0v">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="obu-fV-CNL">
+                                <rect key="frame" x="0.0" y="88" width="414" height="286"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.5 km recorridos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUW-1j-gJs">
+                                <rect key="frame" x="8" y="382" width="398" height="34"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14 minutos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="go6-99-JNk">
+                                <rect key="frame" x="8" y="436" width="398" height="34"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95J-dr-Jn5">
+                                <rect key="frame" x="8" y="767" width="398" height="46"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteButtonAction:" destination="gX4-Ft-kYT" eventType="touchUpInside" id="b8n-wK-gOb"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="obu-fV-CNL" firstAttribute="height" secondItem="tVN-bG-b0v" secondAttribute="height" multiplier="0.319196" id="3f0-TP-fTi"/>
+                            <constraint firstItem="95J-dr-Jn5" firstAttribute="bottom" secondItem="F3L-Ue-bVG" secondAttribute="bottom" id="6b6-l6-Wc0"/>
+                            <constraint firstItem="95J-dr-Jn5" firstAttribute="leading" secondItem="F3L-Ue-bVG" secondAttribute="leading" constant="8" id="98N-6w-Iih"/>
+                            <constraint firstItem="YUW-1j-gJs" firstAttribute="leading" secondItem="F3L-Ue-bVG" secondAttribute="leading" constant="8" id="J93-LS-dLH"/>
+                            <constraint firstItem="go6-99-JNk" firstAttribute="top" secondItem="YUW-1j-gJs" secondAttribute="bottom" constant="20" id="Tjs-1n-3f6"/>
+                            <constraint firstItem="F3L-Ue-bVG" firstAttribute="trailing" secondItem="go6-99-JNk" secondAttribute="trailing" constant="8" id="U94-6j-Xna"/>
+                            <constraint firstItem="go6-99-JNk" firstAttribute="leading" secondItem="F3L-Ue-bVG" secondAttribute="leading" constant="8" id="cGF-Wx-q7p"/>
+                            <constraint firstItem="obu-fV-CNL" firstAttribute="trailing" secondItem="F3L-Ue-bVG" secondAttribute="trailing" id="is9-j2-FcB"/>
+                            <constraint firstItem="YUW-1j-gJs" firstAttribute="top" secondItem="obu-fV-CNL" secondAttribute="bottom" constant="8" id="j5k-Hh-muE"/>
+                            <constraint firstItem="F3L-Ue-bVG" firstAttribute="trailing" secondItem="95J-dr-Jn5" secondAttribute="trailing" constant="8" id="tNh-7C-14r"/>
+                            <constraint firstItem="obu-fV-CNL" firstAttribute="top" secondItem="F3L-Ue-bVG" secondAttribute="top" id="tjy-Ra-y9o"/>
+                            <constraint firstItem="obu-fV-CNL" firstAttribute="leading" secondItem="F3L-Ue-bVG" secondAttribute="leading" id="x2b-0W-xa4"/>
+                            <constraint firstItem="F3L-Ue-bVG" firstAttribute="trailing" secondItem="YUW-1j-gJs" secondAttribute="trailing" constant="8" id="ycF-aA-hZF"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="F3L-Ue-bVG"/>
                     </view>
-                    <navigationItem key="navigationItem" id="II1-ac-iDS"/>
+                    <navigationItem key="navigationItem" id="II1-ac-iDS">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="S82-Dw-BWp">
+                            <connections>
+                                <action selector="shareBarButtonAction" destination="gX4-Ft-kYT" id="xBw-NN-Ow6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="deleteButton" destination="95J-dr-Jn5" id="Nsc-NU-RG6"/>
+                        <outlet property="distanceLabel" destination="YUW-1j-gJs" id="e6B-24-Nfs"/>
+                        <outlet property="mapView" destination="obu-fV-CNL" id="0v9-2l-HE9"/>
+                        <outlet property="shareBarButton" destination="S82-Dw-BWp" id="XZA-Kb-h4i"/>
+                        <outlet property="timeLabel" destination="go6-99-JNk" id="Ouu-RH-QkU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSg-PV-DEu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -135,11 +191,11 @@
             </objects>
             <point key="canvasLocation" x="-462" y="33"/>
         </scene>
-        <!--Routes List-->
+        <!--My routes-->
         <scene sceneID="WYw-ty-VBI">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o1w-Nw-tfw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Routes List" id="49u-rE-dAc"/>
+                    <tabBarItem key="tabBarItem" title="My routes" image="RouteIcon" selectedImage="RouteIcon" id="49u-rE-dAc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oVh-CW-13o">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -158,7 +214,7 @@
         <scene sceneID="ucZ-9D-pR2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Cr-yV-Hsg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" id="gxO-xU-20S"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="MapIcon" selectedImage="MapIcon" id="gxO-xU-20S"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2ws-tt-IT3">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -174,4 +230,8 @@
             <point key="canvasLocation" x="455.07246376811599" y="-291.29464285714283"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MapIcon" width="32" height="32"/>
+        <image name="RouteIcon" width="32" height="32"/>
+    </resources>
 </document>

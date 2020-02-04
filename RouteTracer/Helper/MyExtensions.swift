@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import CoreLocation
 import RealmSwift
+import MapKit
 
 extension UIViewController {
     /**
@@ -182,16 +183,31 @@ extension CLLocationCoordinate2D {
         
         return coordinate
     }
-}
-
-extension Results {
-    func toArray<T>() -> [T] {
-        return compactMap {$0 as? T}
+    
+    func distance(from: CLLocationCoordinate2D) -> CLLocationDistance {
+        let fromLocation = CLLocation(latitude: from.latitude, longitude: from.longitude)
+        let toLocation = CLLocation(latitude: self.latitude, longitude: self.longitude)
+        return fromLocation.distance(from: toLocation)
     }
 }
 
-extension List {
-    func toArray<T>() -> [T] {
-        return compactMap {$0 as? T}
+extension Array where Element == CLLocationCoordinate2D {
+    func calculateTotalDistanceInKm() -> CLLocationDistance {
+        var total = 0.0
+        for i in 0..<self.count - 1 {
+            let start = self[i]
+            let end = self[i + 1]
+            let distance = start.distance(from: end)
+            total += distance
+        }
+        return total / 1000
+    }
+}
+
+extension MKMapView {
+    func goToCurrentLocation() {
+        if let coor = self.userLocation.location?.coordinate{
+            self.setCenter(coor, animated: true)
+        }
     }
 }
