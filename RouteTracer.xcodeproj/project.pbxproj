@@ -3,27 +3,45 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		A30FBA1C23E2285800EA4D98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30FBA1B23E2285800EA4D98 /* AppDelegate.swift */; };
 		A30FBA1E23E2285800EA4D98 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30FBA1D23E2285800EA4D98 /* SceneDelegate.swift */; };
-		A30FBA2023E2285800EA4D98 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30FBA1F23E2285800EA4D98 /* ViewController.swift */; };
 		A30FBA2323E2285800EA4D98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A30FBA2123E2285800EA4D98 /* Main.storyboard */; };
 		A30FBA2523E2285D00EA4D98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A30FBA2423E2285D00EA4D98 /* Assets.xcassets */; };
 		A30FBA2823E2285D00EA4D98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A30FBA2623E2285D00EA4D98 /* LaunchScreen.storyboard */; };
+		A34B629823E35DE2007C132E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B629723E35DE2007C132E /* MapViewController.swift */; };
+		A34B629A23E35E65007C132E /* RoutesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B629923E35E65007C132E /* RoutesListViewController.swift */; };
+		A34B629C23E35E7D007C132E /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B629B23E35E7D007C132E /* RouteDetailViewController.swift */; };
+		A34B629F23E36CE9007C132E /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B629E23E36CE9007C132E /* Route.swift */; };
+		A34B62A223E3758C007C132E /* CoordinateLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B62A123E3758C007C132E /* CoordinateLocation.swift */; };
+		A34B62A423E375F2007C132E /* TracerRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B62A323E375F2007C132E /* TracerRealmManager.swift */; };
+		A34B62A623E37B98007C132E /* MyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B62A523E37B98007C132E /* MyExtensions.swift */; };
+		A36208D223E4F1B30040856E /* MapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36208D123E4F1B30040856E /* MapMarker.swift */; };
+		FC5F92CB47847C877C9FFC15 /* Pods_RouteTracer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32B28084BD9053AD5E6B62B /* Pods_RouteTracer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		45B1F4545E88AC29C5FA9BA9 /* Pods-RouteTracer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouteTracer.debug.xcconfig"; path = "Target Support Files/Pods-RouteTracer/Pods-RouteTracer.debug.xcconfig"; sourceTree = "<group>"; };
+		9299D8109B33C8270B2A35CF /* Pods-RouteTracer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouteTracer.release.xcconfig"; path = "Target Support Files/Pods-RouteTracer/Pods-RouteTracer.release.xcconfig"; sourceTree = "<group>"; };
 		A30FBA1823E2285800EA4D98 /* RouteTracer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RouteTracer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A30FBA1B23E2285800EA4D98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A30FBA1D23E2285800EA4D98 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A30FBA1F23E2285800EA4D98 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A30FBA2223E2285800EA4D98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A30FBA2423E2285D00EA4D98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A30FBA2723E2285D00EA4D98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A30FBA2923E2285D00EA4D98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A34B629723E35DE2007C132E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		A34B629923E35E65007C132E /* RoutesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesListViewController.swift; sourceTree = "<group>"; };
+		A34B629B23E35E7D007C132E /* RouteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
+		A34B629E23E36CE9007C132E /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		A34B62A123E3758C007C132E /* CoordinateLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateLocation.swift; sourceTree = "<group>"; };
+		A34B62A323E375F2007C132E /* TracerRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracerRealmManager.swift; sourceTree = "<group>"; };
+		A34B62A523E37B98007C132E /* MyExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExtensions.swift; sourceTree = "<group>"; };
+		A36208D123E4F1B30040856E /* MapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarker.swift; sourceTree = "<group>"; };
+		C32B28084BD9053AD5E6B62B /* Pods_RouteTracer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RouteTracer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +49,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC5F92CB47847C877C9FFC15 /* Pods_RouteTracer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E500F4A808C21167F28BCFC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C32B28084BD9053AD5E6B62B /* Pods_RouteTracer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A30FBA0F23E2285800EA4D98 = {
 			isa = PBXGroup;
 			children = (
 				A30FBA1A23E2285800EA4D98 /* RouteTracer */,
 				A30FBA1923E2285800EA4D98 /* Products */,
+				A8A2F61F20511580AA4137E7 /* Pods */,
+				8E500F4A808C21167F28BCFC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +85,55 @@
 		A30FBA1A23E2285800EA4D98 /* RouteTracer */ = {
 			isa = PBXGroup;
 			children = (
+				A34B62A023E374C0007C132E /* Helper */,
+				A34B629D23E36CD0007C132E /* Models */,
+				A34B629623E35DBF007C132E /* ViewControllers */,
 				A30FBA1B23E2285800EA4D98 /* AppDelegate.swift */,
 				A30FBA1D23E2285800EA4D98 /* SceneDelegate.swift */,
-				A30FBA1F23E2285800EA4D98 /* ViewController.swift */,
 				A30FBA2123E2285800EA4D98 /* Main.storyboard */,
 				A30FBA2423E2285D00EA4D98 /* Assets.xcassets */,
 				A30FBA2623E2285D00EA4D98 /* LaunchScreen.storyboard */,
 				A30FBA2923E2285D00EA4D98 /* Info.plist */,
 			);
 			path = RouteTracer;
+			sourceTree = "<group>";
+		};
+		A34B629623E35DBF007C132E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A34B629723E35DE2007C132E /* MapViewController.swift */,
+				A34B629923E35E65007C132E /* RoutesListViewController.swift */,
+				A34B629B23E35E7D007C132E /* RouteDetailViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A34B629D23E36CD0007C132E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A34B629E23E36CE9007C132E /* Route.swift */,
+				A34B62A123E3758C007C132E /* CoordinateLocation.swift */,
+				A36208D123E4F1B30040856E /* MapMarker.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A34B62A023E374C0007C132E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				A34B62A323E375F2007C132E /* TracerRealmManager.swift */,
+				A34B62A523E37B98007C132E /* MyExtensions.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		A8A2F61F20511580AA4137E7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				45B1F4545E88AC29C5FA9BA9 /* Pods-RouteTracer.debug.xcconfig */,
+				9299D8109B33C8270B2A35CF /* Pods-RouteTracer.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +143,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A30FBA2C23E2285D00EA4D98 /* Build configuration list for PBXNativeTarget "RouteTracer" */;
 			buildPhases = (
+				0259A7C01E70646F63B25FDF /* [CP] Check Pods Manifest.lock */,
 				A30FBA1423E2285800EA4D98 /* Sources */,
 				A30FBA1523E2285800EA4D98 /* Frameworks */,
 				A30FBA1623E2285800EA4D98 /* Resources */,
+				866609F42EBDF6EA821CE475 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,13 +204,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0259A7C01E70646F63B25FDF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RouteTracer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		866609F42EBDF6EA821CE475 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RouteTracer/Pods-RouteTracer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RouteTracer/Pods-RouteTracer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RouteTracer/Pods-RouteTracer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A30FBA1423E2285800EA4D98 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A30FBA2023E2285800EA4D98 /* ViewController.swift in Sources */,
+				A36208D223E4F1B30040856E /* MapMarker.swift in Sources */,
+				A34B62A423E375F2007C132E /* TracerRealmManager.swift in Sources */,
 				A30FBA1C23E2285800EA4D98 /* AppDelegate.swift in Sources */,
+				A34B62A223E3758C007C132E /* CoordinateLocation.swift in Sources */,
+				A34B629823E35DE2007C132E /* MapViewController.swift in Sources */,
+				A34B629C23E35E7D007C132E /* RouteDetailViewController.swift in Sources */,
+				A34B629F23E36CE9007C132E /* Route.swift in Sources */,
+				A34B62A623E37B98007C132E /* MyExtensions.swift in Sources */,
+				A34B629A23E35E65007C132E /* RoutesListViewController.swift in Sources */,
 				A30FBA1E23E2285800EA4D98 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,11 +402,13 @@
 		};
 		A30FBA2D23E2285D00EA4D98 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45B1F4545E88AC29C5FA9BA9 /* Pods-RouteTracer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3ZMSM9ALSB;
 				INFOPLIST_FILE = RouteTracer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -294,17 +416,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.aep.RouteTracer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		A30FBA2E23E2285D00EA4D98 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9299D8109B33C8270B2A35CF /* Pods-RouteTracer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3ZMSM9ALSB;
 				INFOPLIST_FILE = RouteTracer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,7 +436,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.aep.RouteTracer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
